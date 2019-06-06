@@ -22,6 +22,7 @@ class CreateTransactionsTable extends Migration
             $table->longText('message')->nullable();
             $table->float('amount', 8, 2);
             $table->string('company_name')->default('initiated'); //initiated, completed & paymet failed, completed
+            $table->softDeletes();
             $table->timestamps();
         });
     }
