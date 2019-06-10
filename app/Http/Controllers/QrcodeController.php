@@ -56,7 +56,13 @@ class QrcodeController extends AppBaseController
     {
         $input = $request->all();
 
+        //Save data to the DB
         $qrcode = $this->qrcodeRepository->create($input);
+
+        //Save  qrcode image into our folder
+
+        $image = $qrcode->id.'.png';
+        $file = $image->store('uploads/qrcodes', 'public');
 
         Flash::success('Qrcode saved successfully.');
 
